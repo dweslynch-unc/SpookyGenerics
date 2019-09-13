@@ -3,6 +3,7 @@ package practice;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.Map;
 
 public class MostCommonElement {
 	public static void main (String[] args) {
@@ -11,13 +12,43 @@ public class MostCommonElement {
 	}
 	
     public static int findMostCommonElement(ArrayList<Integer> inputList) {
+	
+	Map<Integer, Integer> occurrences = new HashMap<>();
+	
+	for (int i : inputList)
+	{
+	    if (occurrences.containsKey(i))
+	    {
+                occurrences.put(i, occurrences.get(i));
+	    }
+	    else
+	    {
+		occurrences.put(i, 1);
+	    }
+	}
+	
+	int maxOccurrences = 0;
+	int maxKey = 0;
+	
+	for (Map.Entry<Integer, Integer> entry : occurrences.entrySet())
+	{
+	    if (entry.getValue() > maxOccurrences)
+	    {
+                maxKey = entry.getKey();
+		maxOccurrences = entry.getValue();
+	    }
+	    else if (entry.getValue() == maxOccurrences)
+	    {
+                maxKey = (entry.getKey() > maxKey) ? entry.getKey() : maxKey;
+	    }
+	}
     	// numbers in input list are between 0 and 9 inclusive
     	// if there are two or more elements that appear the same 
     	//   amount of times, return the larger number
     	// your input will always be greater than size 0
     	
     	
-    	return 0;
+    	return maxKey;
     }
     
     public static void Checker() {
