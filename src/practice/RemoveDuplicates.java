@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.Set;
 
 public class RemoveDuplicates {
 	public static void main(String[] args) {
@@ -12,10 +13,21 @@ public class RemoveDuplicates {
 	}
 
 	public static ArrayList<Integer> removeDuplicates(ArrayList<Integer> removeDups) {
-		// remove all duplicates from the array
-		// make sure your final answer is sorted rom smallest to largest
+		Set<Integer> set = new HashSet<>();
+		
+		for (int i : removeDups)
+		{
+		    set.add(i);
+		}
+		
+		ArrayList<Integer> lst = new ArrayList<>();
+		
+		for (int i : set)
+		{
+		    lst.add(i);
+		}
 
-		return null;
+		return lst;
 	}
 
 	public static void Checker() {
